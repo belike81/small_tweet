@@ -11,7 +11,7 @@ describe PagesController do
 
     it "should have the correct title" do
       get 'index'
-      response.should have_selector("title", :content => "Small Twitter")
+      response.should have_selector("title", :content => "Small Twitter | Home")
     end
 
     it "should not have an empty body tag" do

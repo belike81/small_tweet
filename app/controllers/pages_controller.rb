@@ -1,15 +1,15 @@
 class PagesController < ApplicationController
 
   def index
-    @page_title = "Small Twitter"
+    @page_title = "Home"
   end
 
   def contact
-    @page_title = "Small Twitter | Contact"
+    @page_title = "Contact"
   end
 
   def about
-    @page_title = "Small Twitter | About"
+    @page_title = "About"
   end
 
 end
