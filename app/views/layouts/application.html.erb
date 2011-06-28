@@ -7,8 +7,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <h1>Small Tweet App</h1>
 
-<%= yield %>
+    <nav>
+      <ul class="centered">
+        <li><%= link_to "Home", "#" %></li>
+        <li><%= link_to "About", "#" %></li>
+        <li><%= link_to "Contact", "#" %></li>
+      </ul>
+    </nav>
+  </header>
 
+  <section>
+    <div class="centered">
+      <%= yield %>
+    </div>
+  </section>
+
+  <footer>
+    <p class="centered">Small Tweet App &copy; 2011 Tomasz Grabowski</p>
+  </footer>
 </body>
 </html>

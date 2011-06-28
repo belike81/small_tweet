@@ -1,0 +1,40 @@
+$base-violet: #330033;
+$base-violet-dark: darken($base-violet, 20%);
+
+$default-padding: 10px;
+
+@mixin rounded-corners($radius: 5px) {
+  border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+body {
+  color: #2a2a2a;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+a {
+  color: $base-violet;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 1.3em;
+  line-height: 1.5em;
+}
+
+h2 {
+  font-size: 1.167em;
+  line-height: 1.3em;
+}

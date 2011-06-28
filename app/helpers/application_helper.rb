@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def page_title
-    base_title = "Small Twitter"
+    base_title = "Small Tweet"
     if @page_title.nil?
       base_title
     else

@@ -4,7 +4,7 @@ describe PagesController do
   render_views
 
   before :each do
-    @base_title = "Small Twiiter"
+    @base_title = "Small Tweet"
   end
 
   describe "GET 'index'" do
