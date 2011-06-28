@@ -3,6 +3,10 @@ require 'spec_helper'
 describe PagesController do
   render_views
 
+  before :each do
+    @base_title = "Small Twiiter"
+  end
+
   describe "GET 'index'" do
     it "should be successful" do
       get 'index'
@@ -11,7 +15,7 @@ describe PagesController do
 
     it "should have the correct title" do
       get 'index'
-      response.should have_selector("title", :content => "Small Twitter | Home")
+      response.should have_selector("title", :content => "#{@base_title} | Home")
     end
 
     it "should not have an empty body tag" do
@@ -28,7 +32,7 @@ describe PagesController do
 
     it "should have the correct title" do
       get 'contact'
-      response.should have_selector("title", :content => "Small Twitter | Contact")
+      response.should have_selector("title", :content => "#{@base_title} | Contact")
     end
   end
 
@@ -40,7 +44,7 @@ describe PagesController do
 
     it "should have the correct title" do
       get 'about'
-      response.should have_selector("title", :content => "Small Twitter | About")
+      response.should have_selector("title", :content => "#{@base_title} | About")
     end
   end
 
