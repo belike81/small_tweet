@@ -24,7 +24,7 @@ nav {
       display: inline-block;
     }
 
-    a {
+    a, a:visited {
       color: #fff;
       display: block;
       padding: $default-padding;
