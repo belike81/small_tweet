@@ -1,5 +1,6 @@
 SmallTweet::Application.routes.draw do
-  get "users/new"
+
+  resources :users
 
   match "/contact", :to => "pages#contact"
   match "/about", :to => "pages#about"
