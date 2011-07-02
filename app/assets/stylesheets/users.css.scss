@@ -1,7 +1,11 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#user_profile {
+  #user_gravatar {
+    float: left;
+    margin-right: 15px;
+  }
 
-body.Users {
-  // Place scoped styles here
+  #user_profile_name {
+    font-size: 1.6em;
+    line-height: 1em;
+  }
 }

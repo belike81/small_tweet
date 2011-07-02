@@ -1,2 +1,5 @@
-<div><%= gravatar_for @user, :size => 100 %></div>
-<h1><%= @user.name %></h1>
+<div id="user_profile">
+  <div id="user_gravatar"><%= gravatar_for @user, :size => 100 %></div>
+  <h1 id="user_profile_name"><%= @user.name %></h1>
+  <div class="clear"></div>
+</div>

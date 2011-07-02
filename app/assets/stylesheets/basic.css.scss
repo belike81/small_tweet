@@ -1,5 +1,7 @@
 $base-violet: #330033;
 $base-violet-dark: darken($base-violet, 20%);
+$base-font-color-on-white: #2a2a2a;
+$base-font-color-on-dark: #ffffff;
 
 $default-padding: 10px;
 
@@ -10,7 +12,7 @@ $default-padding: 10px;
 }
 
 body {
-  color: #2a2a2a;
+  color: $base-font-color-on-dark;
   font-family: Verdana, Arial, sans-serif;
   font-size: 14px;
   line-height: 16px;
@@ -37,4 +39,8 @@ h1 {
 h2 {
   font-size: 1.167em;
   line-height: 1.3em;
+}
+
+.clear {
+  clear: both;
 }
