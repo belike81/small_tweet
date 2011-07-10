@@ -23,7 +23,12 @@
   </header>
 
   <section class="centered">
-      <%= yield %>
+    <% flash.each do |key, value| %>
+      <div class="flash_message_<%= key %>">
+        <p><%= value %></p>
+      </div>
+    <% end %>
+    <%= yield %>
   </section>
 
   <footer>

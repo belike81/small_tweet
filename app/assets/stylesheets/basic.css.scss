@@ -44,3 +44,19 @@ h2 {
 .clear {
   clear: both;
 }
+
+.errors_container {
+  @include rounded-corners;
+  padding: $default-padding;
+  margin: 10px 0;
+  border: 1px solid #E61310;
+  background: #cc0000;
+  background: -moz-linear-gradient(top, #cc0000 0%, #cc0000 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#cc0000), color-stop(100%,#cc0000));
+  background: -webkit-linear-gradient(top, #cc0000 0%,#cc0000 100%);
+  background: -o-linear-gradient(top, #cc0000 0%,#cc0000 100%);
+  background: -ms-linear-gradient(top, #cc0000 0%,#cc0000 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cc0000', endColorstr='#cc0000',GradientType=0 );
+  background: linear-gradient(top, #cc0000 0%,#cc0000 100%);
+  color: #fff;
+}

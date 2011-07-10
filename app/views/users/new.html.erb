@@ -1,6 +1,8 @@
 <h1>Sign up</h1>
 
 <%= form_for @user do |f| %>
+  <%= render :partial => "shared/errors" %>
+
   <div class="form_field">
     <%= f.label :name, "Name" %>
     <%= f.text_field :name %>
