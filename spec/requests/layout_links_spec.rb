@@ -62,6 +62,11 @@ describe "LayoutLinks" do
       visit root_path
       response.should have_selector('a', :href => user_path(@usr) )
     end
+
+    it "should have an edit profile link" do
+      visit user_path(@usr)
+      response.should have_selector('a', :href => edit_user_path(@usr))
+    end
   end
 
 end
