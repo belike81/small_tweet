@@ -98,23 +98,33 @@ describe UsersController do
   end
 
   describe "GET 'edit'" do
-    before(:each) do
-      test_sign_in(@user)
-    end
 
-    it "should be sucesfull" do
-      get :edit, :id => @user
-      response.should be_success
-    end
+    # describe "when signed in" do
+    #   before(:each) do
+    #     test_sign_in(@user)
+    #   end
 
-    it "should have the right title" do
-      get :edit, :id => @user
-      response.should have_selector('title', :content => "Edit user")
-    end
+    #   it "should be sucesfull" do
+    #     get :edit, :id => @user
+    #     response.should be_success
+    #   end
 
-    it "should have a link to change a gravatar" do
-      get :edit, :id => @user
-      response.should have_selector('a', :href => 'http://gravatar.com/emails')
+    #   it "should have the right title" do
+    #     get :edit, :id => @user
+    #     response.should have_selector('title', :content => "Edit user")
+    #   end
+
+    #   it "should have a link to change a gravatar" do
+    #     get :edit, :id => @user
+    #     response.should have_selector('a', :href => 'http://gravatar.com/emails')
+    #   end
+    # end
+
+    describe "when not signed in" do
+      it "should not be abled to reach the page, should be redirected to signin page" do
+        get :edit, :id => @user
+        response.should redirect_to(signin_path)
+      end
     end
   end
 

@@ -22,6 +22,10 @@ module SessionsHelper
     current_user = nil
   end
 
+  def deny_access
+     redirect_to signin_path, :flash => { :success => "Please sign in to access this page" }
+  end
+
   private
 
   def user_from_token
