@@ -38,4 +38,20 @@ describe "LayoutLinks" do
     response.should have_selector('title', :content => 'Contact')
   end
 
+  describe "menu links when user is not signed in" do
+    it "should have a signin link" do
+      visit root_path
+      response.should have_selector('a', :href => signin_path)
+    end
+  end
+
+  describe "menu links when user is signed in" do
+    before(:each) do
+      @user = Factory(:user)
+      visit signin_path
+      fill_in :email, :with => @user.email
+      fill_in :password, :with => @user.pasword
+    end
+  end
+
 end
