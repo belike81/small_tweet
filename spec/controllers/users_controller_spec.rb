@@ -99,33 +99,56 @@ describe UsersController do
 
   describe "GET 'edit'" do
 
-    # describe "when signed in" do
-    #   before(:each) do
-    #     test_sign_in(@user)
-    #   end
+    describe "when signed in" do
 
-    #   it "should be sucesfull" do
-    #     get :edit, :id => @user
-    #     response.should be_success
-    #   end
+      describe "when signed in as correct user" do
 
-    #   it "should have the right title" do
-    #     get :edit, :id => @user
-    #     response.should have_selector('title', :content => "Edit user")
-    #   end
+        before(:each) do
+          test_sign_in(@user)
+        end
 
-    #   it "should have a link to change a gravatar" do
-    #     get :edit, :id => @user
-    #     response.should have_selector('a', :href => 'http://gravatar.com/emails')
-    #   end
-    # end
+        it "should be sucessfull" do
+          get :edit, :id => @user
+          response.should be_success
+        end
+
+        it "should have the right title" do
+          get :edit, :id => @user
+          response.should have_selector('title', :content => "Edit user")
+        end
+
+        it "should have a link to change a gravatar" do
+          get :edit, :id => @user
+          response.should have_selector('a', :href => 'http://gravatar.com/emails')
+        end
+
+      end
+
+      describe "when signed in as wrong user" do
+
+        before(:each) do
+          wrong_user = Factory(:user, :email => "user@test.com")
+          test_sign_in(wrong_user)
+        end
+
+        it "should not allow user to edit other users profile" do
+          get :edit, :id => @user
+          response.should redirect_to(root_path)
+        end
+
+      end
+
+    end
 
     describe "when not signed in" do
+
       it "should not be abled to reach the page, should be redirected to signin page" do
         get :edit, :id => @user
         response.should redirect_to(signin_path)
       end
+
     end
+
   end
 
   describe "PUT 'update'" do
@@ -135,6 +158,7 @@ describe UsersController do
     end
 
     describe "failure" do
+
       before :each do
         @usr = {:name => "", :email => "", :password => "", :password_confirmation => ""}
       end
@@ -151,6 +175,7 @@ describe UsersController do
     end
 
     describe "success" do
+
       before(:each) do
         @usr = { :name => "New name", :email => "user@example.com", :password => "newpass", :password_confirmation => "newpass" }
       end
@@ -168,7 +193,9 @@ describe UsersController do
         put :update, :id => @user, :user => @usr
         flash[:success].should =~ /updated/i
       end
+
     end
+
   end
 
 end
