@@ -16,11 +16,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-<<<<<<< HEAD
       sign_in @user
-=======
-      sign_in(@user)
->>>>>>> 2785c6b2f8afed40188086e8b78d5a5ad6377b06
       redirect_to @user, :flash => { :success => "Your account has been successfully created" }
     else
       @page_title = "Sign Up"

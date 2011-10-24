@@ -94,7 +94,6 @@ describe UsersController do
         post :create, :user => @usr
         controller.should be_signed_in
       end
-<<<<<<< HEAD
     end
   end
 
@@ -156,8 +155,6 @@ describe UsersController do
 
     before(:each) do
       test_sign_in(@user)
-=======
->>>>>>> 2785c6b2f8afed40188086e8b78d5a5ad6377b06
     end
 
     describe "failure" do

@@ -38,7 +38,6 @@ describe "LayoutLinks" do
     response.should have_selector('title', :content => 'Contact')
   end
 
-<<<<<<< HEAD
   describe "when not signed in" do
     it "should have a sign in link" do
       visit root_path
@@ -67,7 +66,9 @@ describe "LayoutLinks" do
     it "should have an edit profile link" do
       visit user_path(@usr)
       response.should have_selector('a', :href => edit_user_path(@usr))
-=======
+    end
+  end
+  
   describe "menu links when user is not signed in" do
     it "should have a signin link" do
       visit root_path
@@ -81,7 +82,6 @@ describe "LayoutLinks" do
       visit signin_path
       fill_in :email, :with => @user.email
       fill_in :password, :with => @user.pasword
->>>>>>> 2785c6b2f8afed40188086e8b78d5a5ad6377b06
     end
   end
 
