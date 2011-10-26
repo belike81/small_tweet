@@ -1,4 +1,5 @@
 #user_profile {
+
   #user_gravatar {
     float: left;
     margin-right: 15px;
@@ -7,5 +8,20 @@
   #user_profile_name {
     font-size: 1.6em;
     line-height: 1em;
+  }
+}
+
+.users_list {
+  li {
+    list-style-type: none;
+  }
+
+  .users_list_gravatar {
+    float: left;
+  }
+
+  .users_list_username {
+    float: left;
+    margin-left: 10px;
   }
 }

@@ -67,8 +67,13 @@ describe "LayoutLinks" do
       visit user_path(@usr)
       response.should have_selector('a', :href => edit_user_path(@usr))
     end
+
+    it "should have a users list link" do
+      visit root_path
+      response.should have_selector('a', :href => users_path)
+    end
   end
-  
+
   describe "menu links when user is not signed in" do
     it "should have a signin link" do
       visit root_path

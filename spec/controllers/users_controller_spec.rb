@@ -7,6 +7,43 @@ describe UsersController do
     @user = Factory(:user)
   end
 
+  describe "GET index" do
+
+    describe "for non-signedin users" do
+      it "should redirect to sign in page" do
+        get :index
+        response.should redirect_to(signin_path)
+      end
+    end
+
+    describe "for signedin users" do
+
+      before(:each) do
+        test_sign_in(@user)
+        Factory(:user, :email => 'another@example.net')
+        Factory(:user, :email => 'another@example.com')
+      end
+
+      it "should be successful" do
+        get :index
+        response.should be_success
+      end
+
+      it "should have the right title" do
+        get :index
+        response.should have_selector('title', :content => 'Users list')
+      end
+
+      it "should have a list element for each user" do
+        get :index
+        User.all.each do |user|
+          response.should have_selector('li', :content => user.name)
+        end
+      end
+    end
+
+  end
+
   describe "GET show" do
     it "should be successful" do
       get :show, :id => @user.id
