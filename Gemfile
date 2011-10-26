@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'rails'
 gem 'sqlite3'
 gem 'gravatar_image_tag'
+gem 'will_paginate'
 
 # Asset template engines
 gem 'sass-rails'
@@ -13,6 +14,7 @@ gem 'jquery-rails'
 
 group :development do
   gem 'rspec-rails'
+  gem 'faker'
 end
 
 group :test do

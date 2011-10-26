@@ -22,6 +22,10 @@ describe UsersController do
         test_sign_in(@user)
         Factory(:user, :email => 'another@example.net')
         Factory(:user, :email => 'another@example.com')
+
+        30.times do
+          Factory(:user, :email => Factory.next(:email))
+        end
       end
 
       it "should be successful" do
@@ -36,9 +40,15 @@ describe UsersController do
 
       it "should have a list element for each user" do
         get :index
-        User.all.each do |user|
+        User.paginate(:page => 1).each do |user|
           response.should have_selector('li', :content => user.name)
         end
+      end
+
+      it "should paginate users" do
+        get :index
+        response.should have_selector('div.pagination')
+        response.should have_selector('a', :content => '2')
       end
     end
 
