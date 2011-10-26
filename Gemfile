@@ -1,22 +1,22 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.rc4'
+gem 'rails'
 gem 'sqlite3'
 gem 'gravatar_image_tag'
 
 # Asset template engines
-gem 'sass-rails', "~> 3.1.0.rc"
+gem 'sass-rails'
 gem 'coffee-script'
 gem 'uglifier'
 
 gem 'jquery-rails'
 
 group :development do
-  gem 'rspec-rails' , '2.6.1'
+  gem 'rspec-rails'
 end
 
 group :test do
-  gem 'rspec-rails' , '2.6.1'
-  gem 'webrat', '0.7.1'
+  gem 'rspec-rails'
+  gem 'webrat'
   gem 'factory_girl_rails'
 end
