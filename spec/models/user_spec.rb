@@ -165,6 +165,29 @@ describe User do
       end
     end
 
+    describe "post association" do
+      before(:each) do
+        @user = User.create!(@usr)
+        @p1 = Factory(:post, :user => @user, :created_at => 1.day.ago)
+        @p2 = Factory(:post, :user => @user, :created_at => 1.hour.ago)
+      end
+
+      it "should have a posts attribute" do
+        @user.should respond_to(:posts)
+      end
+
+      it "should have the right posts order" do
+        @user.posts.should == [@p2, @p1]
+      end
+
+      it "should destroy associated posts" do
+        @user.destroy
+        [@p1, @p2].each do |post|
+          Post.find_by_id(post.id).should be_nil
+        end
+      end
+    end
+
   end
 
 end
