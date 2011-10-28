@@ -2,6 +2,8 @@ $base-violet: #330033;
 $base-violet-dark: darken($base-violet, 20%);
 $base-font-color-on-white: #2a2a2a;
 $base-font-color-on-dark: #ffffff;
+$base-lightfont-color: lighten($base-font-color-on-white, 30%);
+$base-border-color: lighten($base-font-color-on-white, 40%);
 
 $default-padding: 10px;
 
@@ -25,6 +27,11 @@ a, a:visited {
   &:hover {
     text-decoration: underline;
   }
+}
+
+ul {
+  margin: 0;
+  padding: 0;
 }
 
 h1, h2, h3 {
@@ -60,3 +67,22 @@ h2 {
   background: linear-gradient(top, #cc0000 0%,#cc0000 100%);
   color: #fff;
 }
+
+.posts_list {
+  li {
+    list-style-type: none;
+    padding: 5px;
+    border-bottom: 1px solid $base-border-color;
+  }
+
+  li:last-child {
+    border-bottom: none;
+  }
+
+  .post_date {
+    color: $base-lightfont-color;
+    font-size: 0.7em;
+  }
+
+}
+

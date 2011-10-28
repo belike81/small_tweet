@@ -3,3 +3,13 @@
   <h1 id="user_profile_name"><%= @user.name %>(<%= link_to('edit', edit_user_path(current_user)) %>)</h1>
   <div class="clear"></div>
 </div>
+<% if @user.posts.any? %>
+  <ul class="posts_list">
+    <% @posts.each do |post| %>
+      <%= render 'posts/posts', :post => post %>
+    <% end %>
+  </ul>
+
+  <%= will_paginate @posts %>
+<% end %>
+

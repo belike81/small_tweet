@@ -94,6 +94,21 @@ describe UsersController do
       get :show, :id => @user.id
       response.should have_selector('img', :class => 'gravatar')
     end
+
+    it "should show users posts" do
+      p1 = Factory(:post, :user => @user, :content => "First post")
+      p2 = Factory(:post, :user => @user, :content => "Second post")
+
+      get :show, :id => @user.id
+      response.should have_selector('div.post_content', :content => p1.content)
+      response.should have_selector('div.post_content', :content => p2.content)
+    end
+
+    it "should paginate user posts" do
+      50.times { Factory(:post, :user => @user, :content => "Short") }
+      get :show, :id => @user.id
+      response.should have_selector('div.pagination')
+    end
   end
 
   describe "GET 'new'" do
