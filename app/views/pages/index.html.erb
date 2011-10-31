@@ -1,6 +1,7 @@
 <% if signed_in? %>
   <h1>What's up?</h1>
-  <%= render :partial => 'shared/post_form' %>
+  <%= render 'shared/post_form' %>
+  <%= render 'shared/feed' %>
 <% else %>
   <h1>Welcome to Small Tweet!</h1>
   <p>

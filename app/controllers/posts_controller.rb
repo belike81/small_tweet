@@ -6,10 +6,9 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to root_path, :flash => { :success => "Post created" }
     else
+      @feed = []
       render 'pages/index'
     end
   end
 
-  def destroy
-  end
 end

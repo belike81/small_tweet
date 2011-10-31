@@ -143,51 +143,64 @@ describe User do
           User.authenticate(@usr[:email], @usr[:password]).should == @user
         end
       end
-
     end
-
-    describe "admin attribute" do
-      before(:each) do
-        @user = User.create!(@usr)
-      end
-
-      it "should have an admin attribute" do
-        @user.should respond_to(:admin)
-      end
-
-      it "should not be admin by default" do
-        @user.should_not be_admin
-      end
-
-      it "should be convertible to admin" do
-        @user.toggle!(:admin)
-        @user.should be_admin
-      end
-    end
-
-    describe "post association" do
-      before(:each) do
-        @user = User.create!(@usr)
-        @p1 = Factory(:post, :user => @user, :created_at => 1.day.ago)
-        @p2 = Factory(:post, :user => @user, :created_at => 1.hour.ago)
-      end
-
-      it "should have a posts attribute" do
-        @user.should respond_to(:posts)
-      end
-
-      it "should have the right posts order" do
-        @user.posts.should == [@p2, @p1]
-      end
-
-      it "should destroy associated posts" do
-        @user.destroy
-        [@p1, @p2].each do |post|
-          Post.find_by_id(post.id).should be_nil
-        end
-      end
-    end
-
   end
 
+  describe "admin attribute" do
+    before(:each) do
+      @user = User.create!(@usr)
+    end
+
+    it "should have an admin attribute" do
+      @user.should respond_to(:admin)
+    end
+
+    it "should not be admin by default" do
+      @user.should_not be_admin
+    end
+
+    it "should be convertible to admin" do
+      @user.toggle!(:admin)
+      @user.should be_admin
+    end
+  end
+
+  describe "post association" do
+    before(:each) do
+      @user = User.create!(@usr)
+      @p1 = Factory(:post, :user => @user, :created_at => 1.day.ago)
+      @p2 = Factory(:post, :user => @user, :created_at => 1.hour.ago)
+    end
+
+    it "should have a posts attribute" do
+      @user.should respond_to(:posts)
+    end
+
+    it "should have the right posts order" do
+      @user.posts.should == [@p2, @p1]
+    end
+
+    it "should destroy associated posts" do
+      @user.destroy
+      [@p1, @p2].each do |post|
+        Post.find_by_id(post.id).should be_nil
+      end
+    end
+
+    describe "users feed" do
+      it "should display the feed" do
+        @user.should respond_to(:feed)
+      end
+
+      it "should include user's posts" do
+        @user.feed.should include(@p1)
+        @user.feed.should include(@p2)
+      end
+
+      it "should not include non user posts" do
+        p3 = Factory(:post, :user => Factory(:user, :email => Factory.next(:email)), :created_at => 1.hour.ago)
+        @user.feed.should_not include(p3)
+      end
+    end
+  end
 end

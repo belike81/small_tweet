@@ -1,0 +1,8 @@
+<% if @feed.any? %>
+  <ul class="posts_list">
+    <% @feed.each do |post| %>
+      <%= render 'posts/posts', :post => post %>
+    <% end %>
+  </ul>
+  <%= will_paginate @feed %>
+<% end %>

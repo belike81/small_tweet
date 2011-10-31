@@ -2,7 +2,10 @@ class PagesController < ApplicationController
 
   def index
     @page_title = "Home"
-    @post = Post.new if signed_in?
+    if signed_in?
+      @post = Post.new
+      @feed = current_user.feed.paginate(:page => params[:page])
+    end
   end
 
   def contact

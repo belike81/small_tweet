@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
     encrypted_password == encrypt(submited_password)
   end
 
+  def feed
+    Post.where("user_id = ?", self.id)
+  end
+
   class << self
     def authenticate(email, password)
       user = find_by_email(email)
