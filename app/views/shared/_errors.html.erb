@@ -1,9 +1,9 @@
-<% if @user.errors.any? %>
+<% if object.errors.any? %>
   <div class="errors_container">
-    <h2><%= pluralize(@user.errors.count, "error") %> found!</h2>
+    <h2><%= pluralize(object.errors.count, "error") %> found!</h2>
     <p>We found problems with following fields:</p>
     <ul>
-      <% @user.errors.full_messages.each do |message| %>
+      <% object.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>

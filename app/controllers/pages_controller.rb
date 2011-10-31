@@ -2,6 +2,7 @@ class PagesController < ApplicationController
 
   def index
     @page_title = "Home"
+    @post = Post.new if signed_in?
   end
 
   def contact

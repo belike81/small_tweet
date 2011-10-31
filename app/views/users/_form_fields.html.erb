@@ -1,5 +1,4 @@
-<%= render :partial => "shared/errors" %>
-
+<%= render "shared/errors", :object => f.object %>
 <div class="form_field">
   <%= f.label :name, "Name" %>
   <%= f.text_field :name %>

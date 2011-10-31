@@ -40,6 +40,10 @@ module SessionsHelper
     redirect_to signin_path, :flash => { :success => "Please sign in to access this page" }
   end
 
+  def authenticate
+    deny_access unless signed_in?
+  end
+
   def redirect_back(default)
     redirect_to session[:referer] || default
     session[:referer] = nil
