@@ -9,10 +9,6 @@ describe PostsController do
       response.should redirect_to(signin_path)
     end
 
-    it "should deny access to 'destroy'" do
-      post :destroy, :id => 1
-      response.should redirect_to(signin_path)
-    end
   end
 
   describe "POST 'create'" do

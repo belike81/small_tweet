@@ -29,7 +29,7 @@ describe "Posts" do
           visit root_path
           fill_in :post_content, :with => content
           click_button
-          response.should have_selector('p.post_content', :content => content)
+          response.should have_selector('div.post_content', :content => content)
         end.should change(Post, :count).by(1)
       end
     end
