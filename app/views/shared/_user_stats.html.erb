@@ -1,0 +1,17 @@
+<div class="user_stats">
+  <div class="user_gravatar"><%= gravatar_for current_user, :size => 70 %></div>
+  <h2 class="user_profile_name">
+    <%= current_user.name %> | <%= link_to('edit', edit_user_path(current_user)) %>
+  </h2>
+  <a href="<%= following_user_path(current_user) %>">
+    <span class="following">
+      <%= current_user.following.count %> following
+    </span>
+  </a>
+
+  <a href="<%= followers_user_path(current_user) %>">
+    <span class="followers">
+      <%= pluralize(current_user.followers.count, 'follower') %>
+    </span>
+  </a>
+</div>

@@ -1,0 +1,8 @@
+<h1><%= @page_title %></h1>
+<% unless @users.empty? %>
+  <ul class="users_list">
+    <% @users.each do |user| %>
+      <%= render 'users/user', :user => user %>
+    <% end %>
+  </ul>
+<% end %>

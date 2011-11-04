@@ -5,6 +5,7 @@ body {
 .centered {
   width: 980px;
   margin: auto;
+  position: relative;
 }
 
 header {
@@ -41,8 +42,27 @@ section {
   background: #fff;
   padding: $default-padding;
   color: $base-font-color-on-white;
+
+  h1 {
+    clear: both;
+  }
 }
 
 footer {
   padding: $default-padding;
+}
+
+.user_stats {
+  .user_gravatar {
+    float: left;
+    margin-right: 10px;
+  }
+
+  .user_profile_name {
+    /* display: inline; */
+  }
+
+  .following, .followers {
+    
+  }
 }

@@ -1,8 +1,25 @@
-<div id="user_profile">
-  <div id="user_gravatar"><%= gravatar_for @user, :size => 100 %></div>
-  <h1 id="user_profile_name"><%= @user.name %>(<%= link_to('edit', edit_user_path(current_user)) %>)</h1>
-  <div class="clear"></div>
+<div class="user_stats">
+  <div class="user_gravatar"><%= gravatar_for @user, :size => 70 %></div>
+  <h2 class="user_profile_name">
+    <%= @user.name %>
+    <% if current_user?(@user) %>
+      | <%= link_to('edit', edit_user_path(current_user)) %>
+    <% end %>
+  </h2>
+  <a href="<%= following_user_path(@user) %>">
+    <span class="following">
+      <%= @user.following.count %> following
+    </span>
+  </a>
+
+  <a href="<%= followers_user_path(@user) %>">
+    <span class="followers">
+      <%= pluralize(@user.followers.count, 'follower') %>
+    </span>
+  </a>
+  <%= render 'users/follow_form' if signed_in? %>
 </div>
+<h1>User posts</h1>
 <% if @user.posts.any? %>
   <ul class="posts_list">
     <% @posts.each do |post| %>

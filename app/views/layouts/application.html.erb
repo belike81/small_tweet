@@ -26,8 +26,16 @@
         </ul>
       </nav>
       <div class="clear"></div>
+
+      <% if signed_in? %>
+        <div class="user_profile">
+          <%= render 'shared/user_stats' %>
+        </div>
+      <% end %>
+
     </div>
   </header>
+
 
   <section class="centered">
     <% flash.each do |key, value| %>
