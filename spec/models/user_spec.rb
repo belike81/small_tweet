@@ -201,6 +201,13 @@ describe User do
         p3 = Factory(:post, :user => Factory(:user, :email => Factory.next(:email)), :created_at => 1.hour.ago)
         @user.feed.should_not include(p3)
       end
+
+      it "should include the posts of followed users" do
+        followed = Factory(:user, :email => Factory.next(:email))
+        p3 = Factory(:post, :user => followed)
+        @user.follow!(followed)
+        @user.feed.should include(p3)
+      end
     end
   end
 
